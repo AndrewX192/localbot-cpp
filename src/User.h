@@ -6,7 +6,7 @@
 #ifndef USER_H
 #define	USER_H
 
-#include "ircrfc1459.h"
+#include "spec/ircrfc1459.h"
 
 #include <string>
 using namespace std;
