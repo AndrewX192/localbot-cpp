@@ -1,27 +1,24 @@
-/*                                                                                                                                                                                                                                                                             
- * File:   LocalBot.cpp                                                                                                                                                                                                                                                        
- * Author: andrew                                                                                                                                                                                                                                                              
- *                                                                                                                                                                                                                                                                             
- * Created on January 27, 2012, 7:00 PM                                                                                                                                                                                                                                        
- */                                                                                                                                                                                                                                                                            
-                                                                                                                                                                                                                                                                               
-#include "LocalBot.h"                                                                                                                                                                                                                                                          
-                                                                                                                                                                                                                                                                               
-#include <stdio.h>                                                                                                                                                                                                                                                             
-#include <time.h>                                                                                                                                                                                                                                                              
-#include <signal.h>                                                                                                                                                                                                                                                            
-                                                                                                                                                                                                                                                                               
-#include <stdlib.h>                                                                                                                                                                                                                                                            
-#include <string>                                                                                                                                                                                                                                                              
-#include <vector>                                                                                                                                                                                                                                                              
-#include <cstddef>                                                                                                                                                                                                                                                             
-#include <iostream>                                                                                                                                                                                                                                                            
-                                                                                                                                                                                                                                                                               
-using namespace std;                                                                                                                                                                                                                                                           
-                                                                                                                                                                                                                                                                               
-                                                                                                                                                                                                                                                                               
-vector<IRCConnection> _ircConnections;                                                                                                                                                                                                                                         
-                                                                                                                                                                                                                                                                               
+/*
+ * File:   LocalBot.cpp
+ * Author: Andrew Sorensen
+ */
+
+#include "LocalBot.h"
+
+#include <stdio.h>
+#include <time.h>
+#include <signal.h>
+
+#include <stdlib.h>
+#include <string>
+#include <vector>
+#include <cstddef>
+#include <iostream>
+
+using namespace std;
+
+vector<IRCConnection> _ircConnections;
+
 LocalBot::LocalBot() {
     this->_preInit().init()._postInit();
 }
@@ -32,13 +29,11 @@ LocalBot::LocalBot(const LocalBot& orig) {
 LocalBot::~LocalBot() {
 }
 
-LocalBot LocalBot::_preInit()
-{
+LocalBot LocalBot::_preInit() {
     return *this;
 }
 
-LocalBot LocalBot::init()
-{
+LocalBot LocalBot::init() {
     this->_startupTime = time(NULL);
 
     struct sigaction sighandlers [1];
@@ -55,7 +50,7 @@ LocalBot LocalBot::init()
         SIGSEGV,
     };
 
-    for (int i = 0; i < sizeof(handledSignals); i++ ) {
+    for (int i = 0; i < sizeof (handledSignals); i++) {
         sigaction(handledSignals[i], &sighandlers[0], 0);
     }
 
@@ -64,8 +59,7 @@ LocalBot LocalBot::init()
     return *this;
 }
 
-LocalBot LocalBot::_postInit()
-{
+LocalBot LocalBot::_postInit() {
     return *this;
 }
 
@@ -74,23 +68,23 @@ void LocalBot::connectTo() {
 }
 
 void LocalBot::_connect(const string& server, int port) {
-    Connection      c;
-    IRCConnection   ic;
+    Connection c;
+    IRCConnection ic;
 
-    cout << "test: [" << ((int) _ircConnections.size()) <<  "]" << endl;
+    cout << "test: [" << ((int) _ircConnections.size()) << "]" << endl;
 
-//    vector<IRCConnection> connections;
+    //    vector<IRCConnection> connections;
     ic.connection = c;
 
 
-//    connections.push_back(ic);
+    //    connections.push_back(ic);
 
     _ircConnections.push_back(ic);
 
-    cout << "test: [" << ((int) _ircConnections.size()) <<  "]" << endl;
+    cout << "test: [" << ((int) _ircConnections.size()) << "]" << endl;
 
 
-//    int size = (int) this->_ircConnections.size();
+    //    int size = (int) this->_ircConnections.size();
 }
 
 void LocalBot::handleSignal(int signo) {
