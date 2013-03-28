@@ -17,9 +17,9 @@
 #include <cstddef>
 #include <iostream>
 
-using namespace std;
+#include "Connection.h"
 
-vector<IRCConnection> _ircConnections;
+using namespace std;
 
 LocalBot::LocalBot() {
     this->_preInit().init()._postInit();
@@ -36,7 +36,7 @@ LocalBot LocalBot::_preInit() {
 }
 
 LocalBot LocalBot::init() {
-    this->_startupTime = time(NULL);
+    this->startupTime = time(NULL);
 
     struct sigaction sighandlers [1];
 
@@ -66,27 +66,11 @@ LocalBot LocalBot::_postInit() {
 }
 
 void LocalBot::connectTo() {
-    this->_connect("172.16.1.163", 6667);
+    this->connect("172.16.1.163", 6667);
 }
 
-void LocalBot::_connect(const string& server, int port) {
-    Connection c;
-    IRCConnection ic;
-
-    cout << "test: [" << ((int) _ircConnections.size()) << "]" << endl;
-
-    //    vector<IRCConnection> connections;
-    ic.connection = c;
-
-
-    //    connections.push_back(ic);
-
-    _ircConnections.push_back(ic);
-
-    cout << "test: [" << ((int) _ircConnections.size()) << "]" << endl;
-
-
-    //    int size = (int) this->_ircConnections.size();
+void LocalBot::connect(const string& server, int port) {
+    Connection *c = new Connection();
 }
 
 void LocalBot::handleSignal(int signo) {
