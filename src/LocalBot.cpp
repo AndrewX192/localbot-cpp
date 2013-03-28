@@ -5,6 +5,8 @@
 
 #include "LocalBot.h"
 
+#define NUMBER_OF_SIGNALS_TO_HANDLE 5
+
 #include <stdio.h>
 #include <time.h>
 #include <signal.h>
@@ -42,7 +44,7 @@ LocalBot LocalBot::init() {
     sigemptyset(&sighandlers[0].sa_mask);
     sighandlers[0].sa_flags = 0;
 
-    int handledSignals [5] = {
+    int handledSignals [NUMBER_OF_SIGNALS_TO_HANDLE] = {
         SIGINT,
         SIGABRT,
         SIGTERM,
@@ -50,7 +52,7 @@ LocalBot LocalBot::init() {
         SIGSEGV,
     };
 
-    for (int i = 0; i < sizeof (handledSignals); i++) {
+    for (int i = 0; i < NUMBER_OF_SIGNALS_TO_HANDLE; i++) {
         sigaction(handledSignals[i], &sighandlers[0], 0);
     }
 
