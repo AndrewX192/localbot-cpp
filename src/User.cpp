@@ -15,22 +15,22 @@ User::User(const User& orig) {
 User::~User() {
 }
 
-User::setName(string name) {
+void User::setName(string name) {
     this->name = name;
 }
 
-User::getName() {
+string User::getName() {
     return this->name;
 }
 
-User::setHostname(string nick) {
+void User::setHostname(string nick) {
     this->hostname = nick;
 }
 
-User::getHostname() {
+string User::getHostname() {
     return this->hostname;
 }
 
-User::setIdent(string ident) {
+void User::setIdent(string ident) {
     this->ident = ident;
 }

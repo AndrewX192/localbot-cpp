@@ -16,11 +16,11 @@ public:
     User();
     User(const User& orig);
     virtual ~User();
-    User setName(string name);
+    void setName(string name);
     string getName();
-    User setHostname(string hostname);
+    void setHostname(string hostname);
     string getHostname();
-    User setIdent(string ident);
+    void setIdent(string ident);
     string getIdent();
 private:
     string name;
