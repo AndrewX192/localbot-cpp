@@ -3,19 +3,14 @@
  * Author: Andrew Sorensen
  */
 
+#ifndef LOCALBOT_H
+#define	LOCALBOT_H
+
 #include "Connection.h"
 #include <vector>
 #include <string>
 
 using namespace std;
-
-#ifndef LOCALBOT_H
-#define	LOCALBOT_H
-
-struct IRCConnection {
-    int test;
-    Connection connection;
-};
 
 class LocalBot {
 public:
@@ -29,17 +24,16 @@ public:
 
 protected:
     LocalBot init();
-private:
-    int _startupTime;
-
-//    vector<IRCConnection> _ircConnections;
 
     LocalBot _preInit();
     LocalBot _postInit();
+private:
+    int startupTime;
+    vector<Connection> ircConnection;
 
-    void _connect(const string& server, int port);
 
 
+    void connect(const string& server, int port);
 };
 
 #endif	/* LOCALBOT_H */
