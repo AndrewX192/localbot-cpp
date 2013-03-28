@@ -6,9 +6,6 @@
 #include "Connection.h"
 #include <sys/socket.h>
 #include <stdio.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netdb.h>
 #include <errno.h>
 
 Connection::Connection() {
@@ -27,7 +24,7 @@ Connection Connection::create() {
 
 }
 
-int Connection::connect(char* server, int port) {
+int Connection::connectTo(char* server, int port) {
     int connection;
     
     connection = socket(AF_INET, SOCK_STREAM, 0);
@@ -39,7 +36,7 @@ int Connection::connect(char* server, int port) {
     
     addrinfo* a = resolveDns(server);
     
-    int result = connect(connection, a, a->ai_addrlen);
+    int result = connect(connection, a->ai_addr, a->ai_addrlen);
     
     if (result < 0) {
         return errno;

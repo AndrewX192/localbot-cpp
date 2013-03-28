@@ -7,6 +7,9 @@
 #define	CONNECTION_H
 
 #include <string>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netdb.h>
 using namespace std;
 
 #define OUT_OF_FILE_DESCRIPTORS -1
@@ -18,7 +21,7 @@ public:
     virtual ~Connection();
 
     Connection create();
-    int connect();
+    int connectTo(char*, int);
 private:
     addrinfo* resolveDns(string);
 };
