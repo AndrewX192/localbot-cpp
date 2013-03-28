@@ -12,6 +12,7 @@
 using namespace std;
 
 #include "spec/ircrfc1459.h"
+#include "Channel.h"
 
 class Network {
 public:
@@ -20,15 +21,16 @@ public:
         nick  = new char[NICK_MAX_LENGTH];
         ident = new char[IDENT_MAX_LENGTH];
     }
+    Network(string name);
     Network(const Network& orig);
     virtual ~Network();
-    Network setName(char*); 
-    Network setNick(char*);
-    Network setIdent(char*);
+    void setName(char*); 
+    void setNick(char*);
+    void setIdent(char*);
     
     // channel management
-    bool hasChannel(Channel* ptr);
-    Network addChannel(Channel* ptr);
+    bool hasChannel(Channel ptr);
+    void addChannel(Channel);
     Network getChannel(char *name);
     vector<Channel> getChannels();
     Network removeChannel(char *name);

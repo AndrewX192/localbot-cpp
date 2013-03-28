@@ -6,7 +6,7 @@
 #include "Network.h"
 #include "Channel.h"
 
-Network::Network(char* name) {
+Network::Network(string name) {
 
 }
 
@@ -23,7 +23,7 @@ Network::~Network() {
  * 
  * @return 
  */
-Network::setName(char* name) {
+void Network::setName(char* name) {
     this->name = name;
 }
 
@@ -34,7 +34,7 @@ Network::setName(char* name) {
  * 
  * @return 
  */
-Network::setNick(char* nick) {
+void Network::setNick(char* nick) {
     this->nick = nick;
 }
 
@@ -45,7 +45,7 @@ Network::setNick(char* nick) {
  * 
  * @return 
  */
-Network::setIdent(char* ident) {
+void Network::setIdent(char* ident) {
     this->ident = ident;
 }
 
@@ -56,7 +56,7 @@ Network::setIdent(char* ident) {
  * 
  * @return 
  */
-Network::hasChannel(Channel* ptr) {
+bool Network::hasChannel(Channel ptr) {
     return false;
 }
 
@@ -67,6 +67,6 @@ Network::hasChannel(Channel* ptr) {
  * 
  * @return 
  */
-Network::addChannel(Channel* ptr) {
-    this->channels[this->channels.size()] = ptr;
+void Network::addChannel(Channel ptr) {
+    this->channels.push_back(ptr);
 }

@@ -10,7 +10,7 @@
  * Constants for maximum length
  */
 #define NICK_MAX_LENGTH 31
-#define NAME_MAX_LENGTH 
+#define NAME_MAX_LENGTH 51 // TODO check this
 #define IDENT_MAX_LENGTH 11
 
 #endif	/* IRCRFC1459_H */
