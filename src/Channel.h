@@ -9,6 +9,8 @@
 #include <vector>
 using namespace std;
 
+#include "User.h"
+
 class Channel {
 public:
     Channel();
