@@ -4,6 +4,7 @@
  */
 
 #include "Network.h"
+#include "Channel.h"
 
 Network::Network(char* name) {
 

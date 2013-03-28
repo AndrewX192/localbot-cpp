@@ -11,12 +11,7 @@
 
 using namespace std;
 
-/*
- * Constants for maximum length
- */
-#define NICK_MAX_LENGTH 31
-#define NAME_MAX_LENGTH 
-#define IDENT_MAX_LENGTH 11
+#include "spec/ircrfc1459.h"
 
 class Network {
 public:
